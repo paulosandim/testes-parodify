@@ -14,7 +14,10 @@ test('deve tocar uma música', async ({ page }) => {
   const songCard = page.locator('.song').filter({hasText: song.title})
 
   const play = songCard.locator('.play')
+  const pause = songCard.locator('.pause')
+
   await play.click()
+  await expect(pause).toBeVisible({timeout: 2000})
 
   // await page.click('section > div > div:nth-child(1) > div > button')
   await page.waitForTimeout(5000)
